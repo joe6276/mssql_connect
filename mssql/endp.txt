@@ -1,0 +1,35 @@
+app.delete('/student/:id', async(req,res)=>{
+const {id }= req.params.id
+
+try {
+let pool =await mssql.connect(config)
+ await pool.request()
+            .input('input_parameter', mssql.Int, id)
+            .query('DELETE FROM dbo.users WHERE id =@input_parameter')
+
+res.json("Data DELETED Successfully")
+} catch(err){
+    console.log(err)
+}
+})
+
+
+app.put('/student/:id',
+    async (req,res) => {
+        const{ firstname, email}= req.body;
+        const {id}= req.params.id
+        const sql = `UPDATE users SET firstname=${firstname},email=${email} WHERE id=${id}`
+        try {
+            let pool= await mssql.connect(config)
+            await pool.request()
+            .input('id', mssql.Int, id)
+            .input('firstname',mssql.VarChar, firstname )
+            .input('email',mssql.VarChar, email )
+            .query(sql)
+            res.json("Data Updated")
+            
+        } catch (err) {
+            console.log("Here: ",err.message)
+        }
+    }
+)
