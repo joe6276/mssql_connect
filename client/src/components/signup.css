@@ -1,0 +1,48 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+   
+}
+
+
+.form-input{
+    width: 50%;
+   
+    
+}
+
+.form-input label{
+    width: 100%;
+    height: 100%;
+    color: black;
+     font-weight: bolder;
+     padding: 10px;
+
+}
+.btn{
+    padding: 10px 50px ;
+    margin-top: 20px;
+}
+
+.form-input input{
+    width: 100%;
+    height: 100%;
+    color: black;
+     font-weight: bolder;
+     padding: 10px;
+     
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+}
+.header-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
