@@ -36,11 +36,11 @@ async function getUser(req,res){
     }
 }
     async function addUser (req,res){
-        const{ names, email}= req.body;
+        const{ firstname, email}= req.body;
         try {
            let pool= await mssql.connect(config)
            await pool.request().
-           query(`INSERT INTO users(firstname, email) VALUES ('${names}', '${email}')`)
+           query(`INSERT INTO users(firstname, email) VALUES ('${firstname}', '${email}')`)
             res.json("Data INserted successfully")
         } catch (err) {
             console.log(err.message)
@@ -49,12 +49,12 @@ async function getUser(req,res){
 
 
     async function updateUser (req,res){
-        const{ names, email}= req.body;
+        const{ firstname, email}= req.body;
         const id = req.params.id
         try {
            let pool= await mssql.connect(config)
            await pool.request().
-           query(`UPDATE users SET firstname='${names}', email='${email}' WHERE id=${id}`)
+           query(`UPDATE users SET firstname='${firstname}', email='${email}' WHERE id=${id}`)
             res.json("Data updated ")
         } catch (err) {
             console.log(err)
